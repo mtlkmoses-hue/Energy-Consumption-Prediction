@@ -1,11 +1,11 @@
 Project Title: Energy-Consumption-Prediction
 
 # Project Description: 
-This project bridges the gap between Data Science and Utility Management at the BPC. By applying Supervised Machine Learning (Linear Regression), I developed a model that predicts monthly electricity usage (kWh) based on a property’s Square Footage.
+This project bridges the gap between Data Science and Utility Management at the BPC. By applying Supervised Machine Learning (Linear Regression), I'm to develop a model that will predicts monthly electricity usage (kWh) based on a property’s Square Footage. By establishing a linear relationship between building size and energy load, this tool assists in transformer load planning and distribution efficiency for utility providers.
 
 # Student Information
 Name: Kgomotso Moses Motlalekgosi 
-Team Members: N/A
+Team Members: Individual Project
 
 # Date Completed
 March 2026
