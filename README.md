@@ -39,7 +39,7 @@ Follow these steps to run the electricity consumption prediction model:
 7. The program will display the predicted electricity consumption
    for a 2000 square foot house.
 
-   link to the web: 
+   link to the web: https://r5syhphmhi8gw6hzftdg4j.streamlit.app/
 
 # Dataset
 The data used in this project is a Synthetic Utility Dataset designed to mirror residential electricity consumption patterns observed in Gaborone and surrounding areas in Botswana. It is modeled after the statistical frameworks used by the Botswana Power Corporation (BPC) and Statistics Botswana to estimate load requirements for new grid connections. Dataset SizeRecords: 20 observations (representing a sample of diverse residential properties).Format: Comma-Separated Values (.csv).Target Type: Continuous Numerical.Features (Attributes)The dataset focuses on the two most critical variables for a simple Linear Regression model:Square_Footage - The total floor area of the residential building (Independent Variable) and Monthly_kWh, The total electricity consumed in a 30-day billing cycle (Target Variable).
