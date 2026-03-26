@@ -2,37 +2,27 @@ import streamlit as st
 import joblib
 import numpy as np
 
-# 1. Page Title & Branding
-st.set_page_config(page_title="BPC Energy Predictor", page_icon="⚡")
-st.title("⚡ BPC Energy Consumption Predictor")
-st.write("Predicting household electricity usage for Gaborone properties.")
+# Set page title
+st.set_page_config(page_title="BPC Load Estimator", page_icon="⚡")
 
-# 2. Load the Model correctly using joblib
+st.title("⚡ BPC Residential Load Estimator")
+st.write("Enter the property size to predict expected monthly electricity consumption.")
+
+# 1. Load the model (Make sure this file is uploaded to the same GitHub repo!)
 try:
-    # Notice we don't use 'with open' for joblib, it's simpler!
     model = joblib.load('electricity_model.pkl')
-    st.sidebar.success("Model loaded successfully!")
-except Exception as e:
-    st.sidebar.error(f"Error loading model: {e}")
-    st.stop()
-
-# 3. User Input (Square Footage)
-st.subheader("Property Details")
-sq_ft = st.number_input("Enter Square Footage of the House:", min_value=100, max_value=10000, value=1000)
-
-# 4. Predict Button
-if st.button("Calculate Estimated Usage"):
-    # Reshape input to match model requirements
-    input_data = np.array([[sq_ft]])
-    prediction = model.predict(input_data)
     
-    # Check if this is our Logistic (Classification) or Linear (Continuous) model
-    # If the output is an integer 0 or 1, it's the Logistic model
-    if hasattr(model, "predict_proba"): 
-        category = "High Consumer" if prediction[0] == 1 else "Efficient Consumer"
-        st.metric("Energy Category", category)
-    else:
-        st.metric("Estimated Monthly Usage", f"{prediction[0]:.2f} kWh")
+    # 2. User Input
+    house_size = st.number_input("Property Size (Square Footage)", min_value=400, max_value=10000, value=1500)
+
+    # 3. Prediction Button
+    if st.button("Predict Consumption"):
+        prediction = model.predict(np.array([[house_size]]))
+        st.success(f"Estimated Monthly Consumption: {prediction[0]:.2f} kWh")
+        st.info("This estimate helps BPC planners allocate transformer capacity efficiently.")
+
+except FileNotFoundError:
+    st.error("Error: 'electricity_model.pkl' not found in the repository. Please upload it!")
 
 st.markdown("---")
 st.caption("BPC Project 1 - Data Science Technician Portfolio")
